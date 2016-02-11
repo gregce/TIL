@@ -5,7 +5,7 @@ Unfortunately Hive doesn't have a `group_concat` function like MySQL. It does, h
 Use Case:
 You want to collapse the values from number of rows into a single concatenated value and determine its length
 
-## Start w/ a query and it's output to get the hang of collect_list
+### Start w/ a query and it's output to get the hang of collect_list
 
 ```
 SELECT
@@ -23,7 +23,7 @@ Cape Verde              ["Herman","Graham"]
 Cocos (Keeling) Islands ["Graiden","Justin"]
 ```
 
-## The below fails because length() expects a string parameter
+### The below fails because length() expects a string parameter
 
 ```
 SELECT length(name_list) as len
@@ -36,7 +36,7 @@ FROM (
 WHERE size(name_list) > 1
 ```
 
-## In the absense of an explict cast function, concat\_ws is a handy stand in that can take an array (your name_list value)
+### In the absense of an explict cast function, concat\_ws is a handy stand in that can take an array (your name_list value)
 
 ```
 SELECT length(concat_ws('', name_list)) as len
