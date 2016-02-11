@@ -7,14 +7,14 @@ You want to collapse the values from number of rows into a single concatenated v
 
 ## Start w/ a query and it's output to get the hang of collect_list
 
-```SELECT *
-FROM (
-    SELECT country
-        ,collect_list(NAME) AS name_list
-    FROM fakedata
-    GROUP BY country
-    ) AS SQ
-WHERE size(name_list) > 1```
+```SELECT * <br />
+FROM ( <br />
+    SELECT country <br />
+        ,collect_list(NAME) AS name_list <br />
+    FROM fakedata <br />
+    GROUP BY country <br />
+    ) AS SQ<br /> 
+WHERE size(name_list) > 1 <br />```
 
 country                 name_list
 Bahrain                 ["Erasmus","Robert"]
