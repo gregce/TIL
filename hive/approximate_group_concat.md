@@ -7,14 +7,14 @@ You want to collapse the values from number of rows into a single concatenated v
 
 ## Start w/ a query and it's output to get the hang of collect_list
 
-```SELECT * <br />
-FROM ( <br />
-    SELECT country <br />
-        ,collect_list(NAME) AS name_list <br />
-    FROM fakedata <br />
-    GROUP BY country <br />
-    ) AS SQ<br /> 
-WHERE size(name_list) > 1 <br />```
+SELECT
+FROM (
+    SELECT country 
+        ,collect\_list(NAME) AS name_list 
+    FROM fakedata
+    GROUP BY country 
+    ) AS SQ
+WHERE size(name_list) > 1 
 
 country                 name_list
 Bahrain                 ["Erasmus","Robert"]
@@ -24,25 +24,25 @@ Cocos (Keeling) Islands ["Graiden","Justin"]
 
 ## The below fails because length() expects a string parameter
 
-```SELECT length(name_list) as len
+SELECT length(name_list) as len
 FROM (
     SELECT country
-        ,collect_list(NAME) AS name_list
+        ,collect\_list(NAME) AS name_list
     FROM fakedata
     GROUP BY country
     ) AS SQ
-WHERE size(name_list) > 1```
+WHERE size(name_list) > 1
 
 ## In the absense of an explict cast function, ```concat_ws``` is a handy stand in that can take an array (your name_list value)
 
-```SELECT length(concat_ws('', name_list)) as len
+SELECT length(concat_ws('', name_list)) as len
 FROM (
     SELECT country
-        ,collect_list(NAME) AS name_list
+        ,collect\_list(NAME) AS name_list
     FROM gregce.fakedata
     GROUP BY country
     ) AS SQ
-WHERE size(name_list) > 1```
+WHERE size(name_list) > 1
 
 len
 13
