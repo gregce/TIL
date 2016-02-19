@@ -1,9 +1,9 @@
-# Approximating group concat in Hive
+# Converting a nested list to a dataframe the easy way (data.table + rbindlist!)
 
-Unfortunately Hive doesn't have a `group_concat` function like MySQL. It does, however; have `collect_set` and `collect_list` functions which can be used with another wrapper functinon `concat_ws` to return a string representation similar to `group_concat`. 
+If you've ever used R to parse JSON from the web, you'll often end up trying to flatten nested lists to dataframe. When they don't have the same number of subelements, it can become a headache.
 
 Use Case:
-You want to collapse the values from a number of rows into a single concatenated value/field and determine its length
+You want to bind a bunch of rows with mis-matching columns. Traditional methods fail!
 
 ### Starting point w/ a list without the same number of columns
 
