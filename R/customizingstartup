@@ -1,0 +1,20 @@
+# Customizing startup options in R studio
+
+Note: this assumes you're running a *nix OS
+
+Start up options can be easily customized in the .Rprofile file. Upon startup, R searches for this file in your current working directory, `getwd()`, or your home directory `/~` for an .Rprofile file.
+
+Customizing this file allows you to customize your startup and exit options. Of course there are a lots of possible Options() values you can set too. I've taken a minimialistic approach to customizing these options.
+
+```
+.First <- function(){
+ rm(list = ls())
+ cat("\nWelcome Greg at", date(), "\n")
+}
+
+.Last <- function(){
+ cat("\nGoodbye at ", date(), "\n")
+}
+```
+
+Extensive description can be found here: https://stat.ethz.ch/R-manual/R-devel/library/base/html/Startup.html
