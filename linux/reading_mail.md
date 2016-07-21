@@ -1,15 +1,12 @@
-# Combing and Zipping w/ Tar and Gzip
+# You've got mail
 
-Its common the case that you want to combine / archive a bunch of files together prior to compressing them. Using standard bash, this is made possible through the use of tar + gzip. 
+I recently began using cronjobs to manage and schedule different type of analytics scripts on a dev VM at work. When the jobs occaisionally fail to execute, crontab may also fail to send me a notificaiton mesage. These mesasges get spooled on my VM and I wanted to access them
 
-### Archvie and zip in a single line
-
-```
-$ tar -czvf file.tar.gz myfiles*.txt
-```
-
-###  Unzip later on
+###  Where is that mail
+Well its likely to live in /var/mail/$USER. Access it with the below command
 
 ```
-$ tar -xvzf file.tar.gz -C /path/to/parent/dir
+$ nano /var/mail/$USER
 ```
+
+Most often the messages contain output of cron jobs, or a system security report by logwatch, or similar junk. Read it and find out.
